@@ -232,3 +232,59 @@ If you don't use all chanels, comment
    ```cmd
    docker exec cabal_server-server-1 pkill WorldSvr_01_07
    ```
+##########################################################################
+###Database Adjustments
+# SP   dbo.cabal_tool_registerAccount
+ ```cmd
+USE [Account]
+GO
+/****** Object:  StoredProcedure [dbo].[cabal_tool_registerAccount]    Script Date: 10/12/2023 8:34:44 am ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER  PROCEDURE [dbo].[cabal_tool_registerAccount]   (@id varchar(32),  @password  varchar(256))
+AS
+begin tran
+	declare @UserNum as int
+
+	insert into cabal_auth_table( ID, Password, Login, AuthType, IdentityNo ) 
+	values(@id, pwdencrypt(@password), '0', 1, '7700000000000' )
+
+	set @UserNum = @@identity
+
+
+	insert into cabal_charge_auth(usernum, type, expiredate, payminutes,ServiceKind)
+	values(@UserNum, 1, DATEADD(day, 1000, getdate()), 0,1)
+	
+	insert into CabalCash..cashaccount (id,UserNum,Cash,CashBonus,UpdateDateTime) values(@id,@UserNum,0,0,GETDATE())
+
+	select @UserNum as usernum
+commit
+ ```
+## Account & Server01 - Table - cabal_newCharData_table
+ ```cmd
+update cabal_newCharData_table set WarpBField=1023, MapsBField=1023
+update cabal_new_character_data set WarpBField=1023, MapsBField=1023
+ ```
+
+## Server01 - cabal_sp_newchar
+```cmd
+DECLARE @Alz INT = 1000000; -- Example value for Alz
+DECLARE @WarpBField INT = 1023; -- Example value for WarpBField
+DECLARE @MapsBField INT = 1023; -- Example value for MapsBField
+INSERT INTO cabal_character_table
+(
+	CharacterIdx, Name,
+	LEV, [EXP], [STR], DEX, [INT], PNT, Rank, Alz,
+	WorldIdx, [Position], Style, 
+	HP, MP, SP, SwdPNT, MagPNT, RankEXP, Flags, WarpBField, MapsBField
+)
+SELECT
+	@CharacterIdx, @Name,
+	LEV, [EXP], [STR], [DEX], [INT], [PNT], Rank, @Alz,
+	WorldIdx, Position, @Style,
+	HP, MP, SP, SwdPNT, MagPNT, RankEXP, Flags, @WarpBField, @MapsBField
+FROM cabal_new_character_data
+WHERE ClassType = @StyleMastery
+ ```
