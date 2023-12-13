@@ -273,18 +273,41 @@ update cabal_new_character_data set WarpBField=1023, MapsBField=1023
 DECLARE @Alz INT = 1000000; -- Example value for Alz
 DECLARE @WarpBField INT = 1023; -- Example value for WarpBField
 DECLARE @MapsBField INT = 1023; -- Example value for MapsBField
+DECLARE @Reputation INT = 5000; -- Example value for MapsBField
 INSERT INTO cabal_character_table
 (
 	CharacterIdx, Name,
 	LEV, [EXP], [STR], DEX, [INT], PNT, Rank, Alz,
 	WorldIdx, [Position], Style, 
-	HP, MP, SP, SwdPNT, MagPNT, RankEXP, Flags, WarpBField, MapsBField
+	HP, MP, SP, SwdPNT, MagPNT, RankEXP, Flags, WarpBField, MapsBField, Reputation
 )
 SELECT
 	@CharacterIdx, @Name,
 	LEV, [EXP], [STR], [DEX], [INT], [PNT], Rank, @Alz,
-	WorldIdx, Position, @Style,
-	HP, MP, SP, SwdPNT, MagPNT, RankEXP, Flags, @WarpBField, @MapsBField
+	WorldIdx, Position, @Style +88,
+	HP, MP, SP, SwdPNT, MagPNT, RankEXP, Flags, @WarpBField, @MapsBField , @Reputation
 FROM cabal_new_character_data
 WHERE ClassType = @StyleMastery
+ ```
+## where @styles are
+```cmd
++8 = Class Rank 2
++16 = Class Rank 3
++24 = Class Rank 4
++32 = Class Rank 5
++40 = Class Rank 6
++48 = Class Rank 7
++56 = Class Rank 8
++64 = Class Rank 9
++72 = Class Rank 10
++80 = Class Rank 11
++88 = Class Rank 12
++96 = Class Rank 13
++104 = Class Rank 14
++112 = Class Rank 15
++120 = Class Rank 16
++128 = Class Rank 17
++136 = Class Rank 18
++144 = Class Rank 19
++152 = Class Rank 20
  ```
