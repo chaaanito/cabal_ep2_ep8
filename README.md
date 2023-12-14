@@ -270,11 +270,11 @@ update cabal_new_character_data set WarpBField=1023, MapsBField=1023
 
 ## Server01 - cabal_sp_newchar
 ```cmd
-DECLARE @WarExp INT = 30;
+DECLARE @WarExp INT = 30; -- Example value for WEXP
 DECLARE @Alz INT = 1000000; -- Example value for Alz
 DECLARE @WarpBField INT = 1023; -- Example value for WarpBField
 DECLARE @MapsBField INT = 1023; -- Example value for MapsBField
-DECLARE @Reputation INT = 5000; -- Example value for MapsBField
+DECLARE @Reputation INT = 5000; -- Example value for Honor
 INSERT INTO cabal_character_table
 (
 	CharacterIdx, Name,
