@@ -270,6 +270,7 @@ update cabal_new_character_data set WarpBField=1023, MapsBField=1023
 
 ## Server01 - cabal_sp_newchar
 ```cmd
+DECLARE @WarExp INT = 30;
 DECLARE @Alz INT = 1000000; -- Example value for Alz
 DECLARE @WarpBField INT = 1023; -- Example value for WarpBField
 DECLARE @MapsBField INT = 1023; -- Example value for MapsBField
@@ -288,6 +289,8 @@ SELECT
 	HP, MP, SP, SwdPNT, MagPNT, RankEXP, Flags, @WarpBField, @MapsBField , @Reputation
 FROM cabal_new_character_data
 WHERE ClassType = @StyleMastery
+INSERT INTO cabal_WarExp_Table (CharacterIdx,WarExp)
+SELECT @CharacterIdx, @WarExp
  ```
 ## where @styles are
 ```cmd
