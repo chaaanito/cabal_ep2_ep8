@@ -4,7 +4,6 @@
 ## Table of Contents
 
    - [Docker](#Docker)
-   - [Zerotier-Installation](#Zerotier-Installation)
    - [Cabal-Server-Installation](#Cabal-Server-Installation)
    - [Episode2](#Episode2)
    - [Episode8](#Episode8)
@@ -28,51 +27,6 @@
    ```
    ```cmd
       apk add docker-compose
-   ```
-
-## Zerotier-Installation
-Installing ZeroTier Self-Hosted Controller w/ UI
-1. Clone the repository:
-   ```cmd
-   git clone https://github.com/chaaanito/Cabal_Origin.git
-   
-2. Installing ZTNET Container:
-   ```cmd
-   cd Cabal_Origin/ztnet
-   docker-compose up -d
-   
-3. Access ZTNET Controller
-   ```
-   http://localhost:3000/
-*Create an Account and Create a Network
-
-4. Installing Local Zerotier Client to join the network you have created.
-   ```cmd
-   wget https://dl-cdn.alpinelinux.org/alpine/v3.17/community/x86_64/zerotier-one-openrc-1.10.2-r0.apk
-   wget https://dl-cdn.alpinelinux.org/alpine/v3.17/community/x86_64/zerotier-one-1.10.2-r0.apk
-   apk add zerotier-one-1.10.2-r0.apk 
-   apk add zerotier-one-openrc-1.10.2-r0.apk 
-   rc-update add zerotier-one boot
-
-5. Change Local ZeroTier Client Port
-   ```cmd
-   nano /var/lib/zerotier-one/local.conf
-   ```
-   COPY & PASTE in PuTTy (We need to Change 9993->9994 since ZT Controller uses it already)
-   ```cmd
-   {
-     "settings": {
-       "primaryPort": 9994
-     }
-   }
-   ```
-6. Start Zerotier
-   ```cmd
-   service zerotier-one start
-   ```
-7. Joining ZeroTier Network
-   ```
-   zerotier-cli join (yourNetworkId)
    ```
 
 ## Cabal-Server-Installation
