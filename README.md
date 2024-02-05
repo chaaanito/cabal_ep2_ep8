@@ -157,22 +157,6 @@ Start server
    server/logs
    ```
 
-### GM panel/Register Account http://localhost
-   ```cmd
-   docker-compose up -d --build site nginx
-   docker-compose exec site composer install --no-cache
-   docker-compose exec site php artisan migrate --force
-   docker-compose exec site chmod -R 777 storage
-   ```
-
-### GM panel Set GM
-   ```cmd
-   docker-compose exec site php artisan set:gm (login|ID)
-   ```
-#### example
-   ```cmd
-   docker-compose exec site php artisan set:gm admin
-   ```
 ##########################################################################
 ## Episode8: 
    ```cmd
@@ -200,7 +184,7 @@ Start server
    docker-compose up -d --build server
    ```
 
-If you don't use all chanels, comment 
+If you don't want to use all chanels, comment 
 
    ```docker
 
