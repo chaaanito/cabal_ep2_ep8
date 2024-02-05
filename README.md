@@ -120,10 +120,10 @@ Start server
 ### Environment
 
    Copy .env.example to .env and configurate .env
-
-   Use a strong password for mssql with special symbols, numbers, and uppercase symbols
-
-   Otherwise, your container will not start.
+   ```
+   cp .env.example .env
+   nano .env
+   ```
 
 ### Database
 
@@ -138,7 +138,7 @@ Start server
    docker-compose up -d --build server
    ```
 
-If you don't want to use all chanels, comment 
+If you don't want to use all chanels, edit and comment out channels in the server>Dockerfile folder.
 
    ```docker
 
@@ -152,8 +152,6 @@ If you don't want to use all chanels, comment
    #RUN cabal_create_chanel 1 7
 
    ```
-
-   in server/Dockerfile
 
 ### Service status
 
