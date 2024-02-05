@@ -131,7 +131,7 @@ Start server
    docker-compose up -d --build mssql
    docker-compose exec mssql sh restoredb.sh //enter password db from .env
    ```
-
+wait until db restoration completes
 ### Server
 
    ```cmd
