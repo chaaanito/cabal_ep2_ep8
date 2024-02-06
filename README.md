@@ -44,7 +44,7 @@
    ```
    DB_PASSWORD=StronG_db_passw0rd // Use a strong password for mssql with special symbols, numbers, and uppercase symbols
    DB_PORT=1433 // Database port
-   PUBLIC_IP=this.your.server.ip // IP server <------ use your Zerotier Assigned IP.
+   PUBLIC_IP=this.your.server.ip // IP server
    EXP_RATE=100 // Enter EXP rate multiplier, e.g. 5 for 5x 
    SEXP_RATE=100 // Enter Skill EXP rate multiplier
    CEXP_RATE=100 // Enter Craft EXP rate multiplier
