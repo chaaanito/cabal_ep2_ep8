@@ -168,6 +168,14 @@ If you don't want to use all chanels, edit and comment out channels in the serve
    ```cmd
    docker exec cabal_server-server-1 pkill WorldSvr_01_07
    ```
+
+## WEB: 
+   ```cmd
+   cd cabal_web
+   ```
+```cmd
+   docker-compose up -d
+   ```
 ##########################################################################
 ###Database Adjustments
 # SP   dbo.cabal_tool_registerAccount
