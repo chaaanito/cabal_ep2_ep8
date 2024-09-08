@@ -9,7 +9,7 @@
    - [Episode8](#Episode8)
 
 ## Docker
-
+	ENV ACCEPT_EULA=Y
    Install [Docker]
    Make sure your OS is updated && upgraded. 
    Uncomment your Community Repository to access Docker.
